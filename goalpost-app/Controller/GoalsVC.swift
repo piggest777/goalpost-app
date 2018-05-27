@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class GoalsVC: UIViewController {
 
@@ -20,6 +21,9 @@ class GoalsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let goal = Goal()
+        goal.goalCompletionValue = Int32(exactly: 12.0)
 
     }
 
