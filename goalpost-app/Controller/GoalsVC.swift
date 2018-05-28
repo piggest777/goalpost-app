@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let appDelagate = UIApplication.shared.delegate as? AppDelegate
+
 class GoalsVC: UIViewController {
 
     //Outlets
