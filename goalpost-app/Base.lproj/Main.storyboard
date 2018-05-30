@@ -150,18 +150,39 @@
                                                     <color key="textColor" red="0.42745098040000001" green="0.73725490199999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fee-is-aQb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL COMPLETE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-Om-mco">
+                                                            <rect key="frame" x="56.5" y="14" width="262.5" height="41"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="30"/>
+                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.91764705882352937" green="0.66274509803921566" blue="0.26666666666666666" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="mhw-Om-mco" firstAttribute="centerX" secondItem="Fee-is-aQb" secondAttribute="centerX" id="FNH-d8-mx6"/>
+                                                        <constraint firstItem="mhw-Om-mco" firstAttribute="centerY" secondItem="Fee-is-aQb" secondAttribute="centerY" id="OUl-88-EPd"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CBe-DG-uSk" firstAttribute="top" secondItem="5XW-lQ-71G" secondAttribute="topMargin" id="9mB-Ms-1jK"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fee-is-aQb" secondAttribute="bottom" id="F4s-6Q-CgN"/>
+                                                <constraint firstItem="Fee-is-aQb" firstAttribute="leading" secondItem="5XW-lQ-71G" secondAttribute="leading" id="HHp-FO-xVh"/>
                                                 <constraint firstAttribute="bottom" secondItem="X8m-0M-rUF" secondAttribute="bottom" constant="8" id="Ju4-3B-GLy"/>
                                                 <constraint firstItem="X8m-0M-rUF" firstAttribute="top" secondItem="5XW-lQ-71G" secondAttribute="top" constant="8" id="Rzc-SK-WmC"/>
                                                 <constraint firstItem="CBe-DG-uSk" firstAttribute="leading" secondItem="5XW-lQ-71G" secondAttribute="leadingMargin" constant="10" id="TVU-8I-r0s"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CBe-DG-uSk" secondAttribute="bottom" id="YZU-4f-uc0"/>
+                                                <constraint firstItem="Fee-is-aQb" firstAttribute="top" secondItem="5XW-lQ-71G" secondAttribute="top" id="aYW-lw-JKX"/>
                                                 <constraint firstAttribute="trailing" secondItem="X8m-0M-rUF" secondAttribute="trailing" constant="8" id="bHf-LZ-VZD"/>
                                                 <constraint firstItem="X8m-0M-rUF" firstAttribute="leading" secondItem="CBe-DG-uSk" secondAttribute="trailing" constant="10" id="dyg-HU-a7R"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fee-is-aQb" secondAttribute="trailing" id="egb-Tj-mnI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completionView" destination="Fee-is-aQb" id="gkG-kC-Ou3"/>
                                             <outlet property="goalDescriptionLbl" destination="K5d-BX-8PO" id="NzA-nu-34U"/>
                                             <outlet property="goalProgressLbl" destination="X8m-0M-rUF" id="27B-XY-t4c"/>
                                             <outlet property="goalTypeLbl" destination="Kce-od-r1P" id="qCI-hw-YBh"/>
