@@ -17,6 +17,7 @@
 		6817A55B20BB26910092FC5B /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6817A55A20BB26910092FC5B /* GoalType.swift */; };
 		6817A55D20BB2EC90092FC5B /* CreateGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6817A55C20BB2EC90092FC5B /* CreateGoalVC.swift */; };
 		6817A55F20BB34EF0092FC5B /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6817A55E20BB34EF0092FC5B /* UIViewControllerExt.swift */; };
+		68B17FAD20C06B9500AED012 /* RemoveFileKeeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B17FAC20C06B9500AED012 /* RemoveFileKeeer.swift */; };
 		68C3F74520BC135000F41E5F /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3F74420BC134F00F41E5F /* UIViewExt.swift */; };
 		68C3F74720BC189B00F41E5F /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3F74620BC189B00F41E5F /* UIButtonExt.swift */; };
 		68C3F74920BC2E9000F41E5F /* FinishGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C3F74820BC2E9000F41E5F /* FinishGoalVC.swift */; };
@@ -35,6 +36,7 @@
 		6817A55A20BB26910092FC5B /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		6817A55C20BB2EC90092FC5B /* CreateGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalVC.swift; sourceTree = "<group>"; };
 		6817A55E20BB34EF0092FC5B /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		68B17FAC20C06B9500AED012 /* RemoveFileKeeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFileKeeer.swift; sourceTree = "<group>"; };
 		68C3F74420BC134F00F41E5F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		68C3F74620BC189B00F41E5F /* UIButtonExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
 		68C3F74820BC2E9000F41E5F /* FinishGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGoalVC.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		6817A52C20B941840092FC5B /* goalpost-app */ = {
 			isa = PBXGroup;
 			children = (
+				68B17FAB20C06B6500AED012 /* Model */,
 				6817A54520B942260092FC5B /* Extensions */,
 				6817A54420B9421D0092FC5B /* Enums */,
 				6817A54320B942000092FC5B /* View */,
@@ -118,6 +121,14 @@
 				68C3F74620BC189B00F41E5F /* UIButtonExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		68B17FAB20C06B6500AED012 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68B17FAC20C06B9500AED012 /* RemoveFileKeeer.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 				6817A55B20BB26910092FC5B /* GoalType.swift in Sources */,
 				6817A53020B941840092FC5B /* GoalsVC.swift in Sources */,
 				68C3F74520BC135000F41E5F /* UIViewExt.swift in Sources */,
+				68B17FAD20C06B9500AED012 /* RemoveFileKeeer.swift in Sources */,
 				6817A52E20B941840092FC5B /* AppDelegate.swift in Sources */,
 				6817A55F20BB34EF0092FC5B /* UIViewControllerExt.swift in Sources */,
 				68C3F74720BC189B00F41E5F /* UIButtonExt.swift in Sources */,
@@ -347,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9X329BRT6C;
 				INFOPLIST_FILE = "goalpost-app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9X329BRT6C;
 				INFOPLIST_FILE = "goalpost-app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

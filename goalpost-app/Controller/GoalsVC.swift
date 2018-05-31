@@ -16,25 +16,56 @@ class GoalsVC: UIViewController {
     //Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var undoView: UIView!
+    
+    @IBOutlet weak var undoViewHeightConst: NSLayoutConstraint!
+    
     //Variable
     
     var goals: [Goal] = []
+    var undoGoals: [GoalToRestore] = []
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     tableView.delegate = self
-     tableView.dataSource = self
-     tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isHidden = false
+        undoView.isHidden = true
+        undoViewHeightConst.constant = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchCoreDataObject()
                tableView.reloadData()
+        
     }
+    
+    
+    @IBAction func undoBtnWasPressed(_ sender: Any) {
+        
+        for goal in undoGoals {
+            restoreGoals(goalToSave: goal) { (successeful) in
+                if successeful {
+                    undoGoals.removeFirst()
+                    print(undoGoals)
+                }
+            }
+        }
+        
+
+        
+    fetchCoreDataObject()
+    undoView.isHidden = true
+    undoViewHeightConst.constant = 0
+    tableView.reloadData()
+    view.setNeedsDisplay()
+        
+    }
+    
     
     func fetchCoreDataObject() {
     self.fetch { (comlplete) in
@@ -52,7 +83,16 @@ class GoalsVC: UIViewController {
     @IBAction func addButtonWasPressed(_ sender: Any) {
         guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else { return }
         presentDetail(createGoalVC)
+        undoGoals = []
+        undoView.isHidden = true
+        undoViewHeightConst.constant = 0
         
+    }
+    
+    func keepGoal (description: String, type: String, progress: Int32, completion: Int32 ) {
+        let restoreDate = GoalToRestore(description: description, goalType: type, goalProgress: progress, goalCompletion: completion)
+        
+       undoGoals.append(restoreDate)
     }
     
 
@@ -72,6 +112,7 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         
         let goal = goals[indexPath.row]
         
+        
         cell.configureCell(goal: goal)
         
         return cell
@@ -87,7 +128,13 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowenAction, indexPath) in
+            
+            let goalToRemove = self.goals[indexPath.row]
+            self.keepGoal(description: goalToRemove.goalDescription!, type: goalToRemove.goalType!, progress: goalToRemove.goalProgress, completion: goalToRemove.goalCompletionValue)
             self.removeGoal(atIndexPath: indexPath)
+            self.undoView.isHidden = false
+            self.undoViewHeightConst.constant = 50
+            self.view.setNeedsDisplay()
             self.fetchCoreDataObject()
             
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -129,6 +176,7 @@ extension GoalsVC {
     func removeGoal(atIndexPath indexPath: IndexPath) {
         guard let managedContext = appDelagate?.persistentContainer.viewContext else {return}
         
+//        undoGoals.append(goals[indexPath.row])
         managedContext.delete(goals[indexPath.row])
         
         do{
@@ -152,6 +200,28 @@ extension GoalsVC {
             completion(false)
         }
     }
+    
+    func restoreGoals (goalToSave goal: GoalToRestore, completion: (_ finished: Bool)->()) {
+        guard let managedContex = appDelagate?.persistentContainer.viewContext else {return}
+        
+         let goalToRestore = Goal(context: managedContex)
+        
+        
+        goalToRestore.goalDescription = goal.description
+        goalToRestore.goalType = goal.goalType
+        goalToRestore.goalCompletionValue = goal.goalCompletion
+        goalToRestore.goalProgress = goal.goalProgress
+        
+        do{
+            try managedContex.save()
+            print("successfuly restore data!")
+            completion(true)
+        } catch {
+            debugPrint("Could not restore:\(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
 }
 
 
